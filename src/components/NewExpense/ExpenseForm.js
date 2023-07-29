@@ -22,6 +22,17 @@ export default function ExpenseForm() {
     }
   }
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate) // parses date string and converts it into date object
+    };
+
+    console.log(expenseData);
+  }
+
   // const titleChangeHandler = (event) => {
   //   setEnteredTitle(event.target.value); 
   // };
@@ -35,7 +46,7 @@ export default function ExpenseForm() {
   // };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title:</label>
