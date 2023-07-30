@@ -1,7 +1,7 @@
 import "./ExpenseForm.css";
 import { useState } from "react";
 
-export default function ExpenseForm() {
+export default function ExpenseForm({ onSaveExpenseData }) {
     const [enteredTitle, setEnteredTitle] = useState("");
     const [enteredAmount, setEnteredAmount] = useState("");
     const [enteredDate, setEnteredDate] = useState("");
@@ -30,10 +30,11 @@ export default function ExpenseForm() {
       date: new Date(enteredDate) // parses date string and converts it into date object
     };
 
+    onSaveExpenseData(expenseData); // passes object containing states into parent function, passing data upwards
     setEnteredTitle(""); // overrides what the user entered after the form was submitted and clears the input
     setEnteredAmount("");
     setEnteredDate(""); 
-    console.log(expenseData);
+    
   }
 
   // const titleChangeHandler = (event) => {
