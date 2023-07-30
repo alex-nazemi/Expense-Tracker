@@ -23,13 +23,16 @@ export default function ExpenseForm() {
   }
 
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // prevents page from refreshing on form submission
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate) // parses date string and converts it into date object
     };
 
+    setEnteredTitle(""); // overrides what the user entered after the form was submitted and clears the input
+    setEnteredAmount("");
+    setEnteredDate(""); 
     console.log(expenseData);
   }
 
@@ -50,7 +53,7 @@ export default function ExpenseForm() {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title:</label>
-          <input type="text" onChange={event => inputChangeHandler("title", event.target.value)} />
+          <input type="text" value={enteredTitle} onChange={event => inputChangeHandler("title", event.target.value)} />
         </div>
         <div className="new-expense__control">
           <label>Amount:</label>
@@ -58,6 +61,7 @@ export default function ExpenseForm() {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
             onChange={event => inputChangeHandler("amount", event.target.value)}
           />
         </div>
@@ -67,6 +71,7 @@ export default function ExpenseForm() {
             type="date"
             min="2020-01-01"
             max="2023-12-31"
+            value={enteredDate}
             onChange={event => inputChangeHandler("date", event.target.value)}
           />
         </div>
