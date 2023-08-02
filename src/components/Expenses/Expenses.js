@@ -32,7 +32,7 @@ export default function Expenses(props) {
     <div>
       <Card className="expenses">
         <ExpensesFilter handler={filterHandler} selectedYear={expenseYear}/>
-        {props.expenses.map((expense) => (
+        {props.expenses.filter(expense => expense.date.getFullYear() === Number(expenseYear)).map((expense) => (
           <ExpenseItem
             key={expense.id}
             name={expense.title}
