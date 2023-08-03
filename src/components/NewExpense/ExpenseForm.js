@@ -21,8 +21,8 @@ export default function ExpenseForm({ onSaveExpenseData }) {
     event.preventDefault(); // prevents page from refreshing on form submission
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate), // parses date string and converts it into date object
+      amount: +enteredAmount,
+      date: new Date(enteredDate), // parses data as String and converts it to data value
     };
 
     onSaveExpenseData(expenseData); // passes object containing states into parent function, passing data upwards
